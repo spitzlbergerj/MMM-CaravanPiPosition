@@ -74,9 +74,8 @@ module.exports = NodeHelper.create({
 		while (i<valueListNHCaravanPiGasWeight.length) {
 			if (sensorID === valueListNHCaravanPiGasWeight[i]["file"]) {
 				valueListNHCaravanPiGasWeight[i]["datetime"] = resSplit[1].substring(6,8)+"."+resSplit[1].substring(4,6)+"."+resSplit[1].substring(0,4)+" "+resSplit[1].substring(8,10)+":"+resSplit[1].substring(10,12);
-				valueListNHCaravanPiGasWeight[i]["temperature"] = resSplit[2];
-				valueListNHCaravanPiGasWeight[i]["pressure"] = resSplit[3];
-				valueListNHCaravanPiGasWeight[i]["humidity"] = resSplit[4];
+				valueListNHCaravanPiGasWeight[i]["weight"] = resSplit[2];
+				valueListNHCaravanPiGasWeight[i]["level"] = resSplit[3];
 			}
 			i+=1;
 		}
