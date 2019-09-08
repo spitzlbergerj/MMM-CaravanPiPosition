@@ -1,6 +1,6 @@
 /* ---------------------------------------------------------------------
  * Magic Mirror
- * Module: MMM-CaravanPiClimate
+ * Module: MMM-CaravanPiGasWeight
  *
  * CaravanPi Module
  * see https://github.com/spitzlbergerj/CaravanPi for more Information 
@@ -15,7 +15,7 @@ var async = require('async');
 var exec = require('child_process').exec;
 
 //globale Variable, weil diese ansonsten in fillValueList unbekannt
-valueListNHCaravanPiClimate = [];
+valueListNHCaravanPiGasWeight = [];
 
 module.exports = NodeHelper.create({
 	
@@ -30,12 +30,12 @@ module.exports = NodeHelper.create({
 		switch(notification) {
 			case "CONFIG":
 				this.config = payload.config;
-				valueListNHCaravanPiClimate = payload.valueList;
+				valueListNHCaravanPiGasWeight = payload.valueList;
 				// first call
-				self.getValues(valueListNHCaravanPiClimate);
+				self.getValues(valueListNHCaravanPiGasWeight);
 				// interval call
 				setInterval(function() {
-					self.getValues(valueListNHCaravanPiClimate);
+					self.getValues(valueListNHCaravanPiGasWeight);
 				}, this.config.updateInterval);
 				break
 		}
@@ -55,8 +55,8 @@ module.exports = NodeHelper.create({
 			i+=1;
 		}
 
-		console.error('node_helper - getValues - valueList after', valueListNHCaravanPiClimate[0], valueListNHCaravanPiClimate[1]);
-		self.sendSocketNotification('VALUES', valueListNHCaravanPiClimate);
+		console.error('node_helper - getValues - valueList after', valueListNHCaravanPiGasWeight[0], valueListNHCaravanPiGasWeight[1]);
+		self.sendSocketNotification('VALUES', valueListNHCaravanPiGasWeight);
 	},
 	
 	fillValueList: function (err, stdout, stderr) {
@@ -71,12 +71,12 @@ module.exports = NodeHelper.create({
 		
 		console.error('node_helper - fillValueList ', stdout, sensorID);
 		
-		while (i<valueListNHCaravanPiClimate.length) {
-			if (sensorID === valueListNHCaravanPiClimate[i]["file"]) {
-				valueListNHCaravanPiClimate[i]["datetime"] = resSplit[1].substring(6,8)+"."+resSplit[1].substring(4,6)+"."+resSplit[1].substring(0,4)+" "+resSplit[1].substring(8,10)+":"+resSplit[1].substring(10,12);
-				valueListNHCaravanPiClimate[i]["temperature"] = resSplit[2];
-				valueListNHCaravanPiClimate[i]["pressure"] = resSplit[3];
-				valueListNHCaravanPiClimate[i]["humidity"] = resSplit[4];
+		while (i<valueListNHCaravanPiGasWeight.length) {
+			if (sensorID === valueListNHCaravanPiGasWeight[i]["file"]) {
+				valueListNHCaravanPiGasWeight[i]["datetime"] = resSplit[1].substring(6,8)+"."+resSplit[1].substring(4,6)+"."+resSplit[1].substring(0,4)+" "+resSplit[1].substring(8,10)+":"+resSplit[1].substring(10,12);
+				valueListNHCaravanPiGasWeight[i]["temperature"] = resSplit[2];
+				valueListNHCaravanPiGasWeight[i]["pressure"] = resSplit[3];
+				valueListNHCaravanPiGasWeight[i]["humidity"] = resSplit[4];
 			}
 			i+=1;
 		}

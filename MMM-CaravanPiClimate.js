@@ -1,6 +1,6 @@
 /* ---------------------------------------------------------------------
  * Magic Mirror
- * Module: MMM-CaravanPiClimate
+ * Module: MMM-CaravanPiGasWeight
  *
  * CaravanPi Module
  * see https://github.com/spitzlbergerj/CaravanPi for more Information 
@@ -10,7 +10,7 @@
  * MIT Licensed.
  */
 
-Module.register("MMM-CaravanPiClimate",{
+Module.register("MMM-CaravanPiGasWeight",{
 
 defaults:{
 	valueDir: "/home/pi/CaravanPi/values",
