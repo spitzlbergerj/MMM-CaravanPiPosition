@@ -1,4 +1,4 @@
-# MMM-CaravanPiGasWeight
+# MMM-CaravanPiPosition
 
 This is a module for the [MagicMirror²](https://github.com/MichMich/MagicMirror/).
 
@@ -11,7 +11,7 @@ To use this module, add the following configuration block to the modules array i
 var config = {
     modules: [
         {
-            module: 'MMM-CaravanPiGasWeight',
+            module: 'MMM-CaravanPiPosition',
             config: {
                 // See below for configurable options
             }
