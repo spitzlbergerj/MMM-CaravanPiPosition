@@ -5,6 +5,5 @@
   "main": "MMM-CaravanPiGasWeight.js",
   "author": "spitzlbergerj",
   "license": "MIT",
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }
