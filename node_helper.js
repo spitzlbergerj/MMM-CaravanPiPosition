@@ -1,6 +1,6 @@
 /* ---------------------------------------------------------------------
  * Magic Mirror
- * Module: MMM-CaravanPiGasWeight
+ * Module: MMM-CaravanPiPosition
  *
  * CaravanPi Module
  * see https://github.com/spitzlbergerj/CaravanPi for more Information 
@@ -15,7 +15,7 @@ var async = require('async');
 var exec = require('child_process').exec;
 
 //globale Variable, weil diese ansonsten in fillValueList unbekannt
-valueListNHCaravanPiGasWeight = [];
+valueListNHCaravanPiPosition = [];
 
 module.exports = NodeHelper.create({
 	
@@ -30,12 +30,12 @@ module.exports = NodeHelper.create({
 		switch(notification) {
 			case "CONFIG":
 				this.config = payload.config;
-				valueListNHCaravanPiGasWeight = payload.valueList;
+				valueListNHCaravanPiPosition = payload.valueList;
 				// first call
-				self.getValues(valueListNHCaravanPiGasWeight);
+				self.getValues(valueListNHCaravanPiPosition);
 				// interval call
 				setInterval(function() {
-					self.getValues(valueListNHCaravanPiGasWeight);
+					self.getValues(valueListNHCaravanPiPosition);
 				}, this.config.updateInterval);
 				break
 		}
@@ -55,8 +55,8 @@ module.exports = NodeHelper.create({
 			i+=1;
 		}
 
-		console.error('node_helper - getValues - valueList after', valueListNHCaravanPiGasWeight[0], valueListNHCaravanPiGasWeight[1]);
-		self.sendSocketNotification('VALUES', valueListNHCaravanPiGasWeight);
+		console.error('node_helper - getValues - valueList after', valueListNHCaravanPiPosition[0]);
+		self.sendSocketNotification('VALUES', valueListNHCaravanPiPosition);
 	},
 	
 	fillValueList: function (err, stdout, stderr) {
@@ -67,15 +67,21 @@ module.exports = NodeHelper.create({
 			return;
 		}
 		var resSplit = stdout.split(' ');
-		var sensorID = resSplit[0];
+		var sensorID = "position";
 		
 		console.error('node_helper - fillValueList ', stdout, sensorID);
+		console.error('node_helper - fillValueList ', stdout, sensorID);
 		
-		while (i<valueListNHCaravanPiGasWeight.length) {
-			if (sensorID === valueListNHCaravanPiGasWeight[i]["file"]) {
-				valueListNHCaravanPiGasWeight[i]["datetime"] = resSplit[1].substring(6,8)+"."+resSplit[1].substring(4,6)+"."+resSplit[1].substring(0,4)+" "+resSplit[1].substring(8,10)+":"+resSplit[1].substring(10,12);
-				valueListNHCaravanPiGasWeight[i]["weight"] = resSplit[2];
-				valueListNHCaravanPiGasWeight[i]["level"] = resSplit[3];
+		while (i<valueListNHCaravanPiPosition.length) {
+			if (sensorID === valueListNHCaravanPiPosition[i]["file"]) {
+				valueListNHCaravanPiPosition[i]["datetime"] = resSplit[0].substring(6,8)+"."+resSplit[0].substring(4,6)+"."+resSplit[0].substring(0,4)+" "+resSplit[0].substring(8,10)+":"+resSplit[0].substring(10,12);
+				valueListNHCaravanPiPosition[i]["hl"] = resSplit[12];
+				valueListNHCaravanPiPosition[i]["hr"] = resSplit[13];
+				valueListNHCaravanPiPosition[i]["zl"] = resSplit[14];
+				valueListNHCaravanPiPosition[i]["zr"] = resSplit[15];
+				valueListNHCaravanPiPosition[i]["vl"] = resSplit[16];
+				valueListNHCaravanPiPosition[i]["vr"] = resSplit[17];
+				valueListNHCaravanPiPosition[i]["vo"] = resSplit[18];
 			}
 			i+=1;
 		}

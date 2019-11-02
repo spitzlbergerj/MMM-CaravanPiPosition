@@ -1,0 +1,51 @@
+/*
+ *
+ * MMM-CaravanPiPosition
+ *
+ * spitzlbergerj
+ * MIT Licensed.
+ *
+ * Custom here your css module
+ *
+ */
+.MMMCPIPosition {
+	background-image: url(img/caravanpiMMMbackground.png);
+	background-repeat: no-repeat;
+	background-position: 20px center;
+	font-size: 20px;
+}
+
+.back {
+	width: 100px;
+}
+.middleback {
+	width: 60px;
+}
+.middle {
+	width: 60px;
+}
+.middlefront {
+	width: 60px;
+}
+.front {
+	width: 60px;
+}
+.drawbar {
+	width: 60px;
+}
+
+.leftside {
+	height: 25px;
+}
+.middleleft {
+	height: 25px;
+}
+.middlecenter {
+	height: 25px;
+}
+.middleright {
+	height: 25px;
+}
+.rightside {
+	height: 25px;
+}
