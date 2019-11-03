@@ -9,43 +9,54 @@
  *
  */
 .MMMCPIPosition {
-	background-image: url(img/caravanpiMMMbackground.png);
+	margin-left:auto;
+	margin-right: auto;
+	background-image: url(img/caravanpiMMMbackground.png); /* dimensions of png 400 x 150 */
 	background-repeat: no-repeat;
-	background-position: 20px center;
+	background-position: 15px center;
 	font-size: 20px;
+	font-weight: bold;
+	width: 520px !important;
+	height: 150px !important;
 }
 
+
+
 .back {
+	text-align: left;
 	width: 100px;
 }
 .middleback {
 	width: 60px;
 }
 .middle {
-	width: 60px;
+	text-align: center;
+	width: 100px;
 }
 .middlefront {
 	width: 60px;
 }
 .front {
-	width: 60px;
+	text-align: right;
+	width: 100px;
 }
 .drawbar {
-	width: 60px;
+	text-align: right;
+	width: 100px;
 }
 
 .leftside {
-	height: 25px;
+	height: 30px;
 }
 .middleleft {
-	height: 25px;
+	height: 30px;
 }
 .middlecenter {
-	height: 25px;
+	height: 30px;
 }
 .middleright {
-	height: 25px;
+	height: 30px;
 }
 .rightside {
-	height: 25px;
+	height: 30px;
 }

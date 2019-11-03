@@ -75,6 +75,7 @@ getStyles: function() {
 getDom: function(){
 
 	var i = 0;
+	
 	var hlStr = this.prepareAttribute("HL", this.valueList[i]["hl"]/10, this.config.diffPrecision, this.config.diffUnit);
 	var hrStr = this.prepareAttribute("HR", this.valueList[i]["hr"]/10, this.config.diffPrecision, this.config.diffUnit);
 	var zlStr = this.prepareAttribute("ZL", this.valueList[i]["zl"]/10, this.config.diffPrecision, this.config.diffUnit);
@@ -82,7 +83,7 @@ getDom: function(){
 	var vlStr = this.prepareAttribute("VL", this.valueList[i]["vl"]/10, this.config.diffPrecision, this.config.diffUnit);
 	var vrStr = this.prepareAttribute("VR", this.valueList[i]["vr"]/10, this.config.diffPrecision, this.config.diffUnit);
 	var voStr = this.prepareAttribute("VO", this.valueList[i]["vo"]/10, this.config.diffPrecision, this.config.diffUnit);
-
+	
 	var table = document.createElement("table");
 	table.className = 'MMMCPIPosition';
 	table.border= '0px';
@@ -98,34 +99,28 @@ getDom: function(){
 	var rowElement = document.createElement("td");
 	rowElement.className = 'back';
 	rowElement.appendChild(document.createTextNode(hlStr));
-	
 	row1.appendChild(rowElement);
 	
 	rowElement = document.createElement("td");
 	rowElement.className = 'middleback';
-
 	row1.appendChild(rowElement);
 
 	rowElement = document.createElement("td");
 	rowElement.className = 'middle';
 	rowElement.appendChild(document.createTextNode(zlStr));
-
 	row1.appendChild(rowElement);
 
 	rowElement = document.createElement("td");
 	rowElement.className = 'middlefront';
-
 	row1.appendChild(rowElement);
 	
 	rowElement = document.createElement("td");
 	rowElement.className = 'front';
 	rowElement.appendChild(document.createTextNode(vlStr));
-
 	row1.appendChild(rowElement);
 	
 	rowElement = document.createElement("td");
 	rowElement.className = 'drawbar';
-
 	row1.appendChild(rowElement);
 	
 	
@@ -135,11 +130,27 @@ getDom: function(){
 	row2.vAlign = 'top';
 	
 	rowElement = document.createElement("td");
+	rowElement.className = 'back';
 	row2.appendChild(rowElement);
+	
+	rowElement = document.createElement("td");
+	rowElement.className = 'middleback';
 	row2.appendChild(rowElement);
+	
+	rowElement = document.createElement("td");
+	rowElement.className = 'middle';
 	row2.appendChild(rowElement);
+	
+	rowElement = document.createElement("td");
+	rowElement.className = 'middlefront';
 	row2.appendChild(rowElement);
+	
+	rowElement = document.createElement("td");
+	rowElement.className = 'front';
 	row2.appendChild(rowElement);
+	
+	rowElement = document.createElement("td");
+	rowElement.className = 'drawbar';
 	row2.appendChild(rowElement);
 
 	var row3 = document.createElement("tr");
@@ -148,21 +159,28 @@ getDom: function(){
 	row3.vAlign = 'top';
 	
 	rowElement = document.createElement("td");
-	row3.className = 'back';
+	rowElement.className = 'back';
 	row3.appendChild(rowElement);
-	row3.className = 'middleback';
+	
+	rowElement = document.createElement("td");
+	rowElement.className = 'middleback';
 	row3.appendChild(rowElement);
-	row3.className = 'middle';
+	
+	rowElement = document.createElement("td");
+	rowElement.className = 'middle';
 	row3.appendChild(rowElement);
-	row3.className = 'middlefront';
+	
+	rowElement = document.createElement("td");
+	rowElement.className = 'middlefront';
 	row3.appendChild(rowElement);
-	row3.className = 'front';
+	
+	rowElement = document.createElement("td");
+	rowElement.className = 'front';
 	row3.appendChild(rowElement);
 	
 	rowElement = document.createElement("td");
 	rowElement.className = 'drawbar';
 	rowElement.appendChild(document.createTextNode(voStr));
-
 	row3.appendChild(rowElement);
 
 	var row4 = document.createElement("tr");
@@ -171,11 +189,27 @@ getDom: function(){
 	row4.vAlign = 'top';
 	
 	rowElement = document.createElement("td");
+	rowElement.className = 'back';
 	row4.appendChild(rowElement);
+	
+	rowElement = document.createElement("td");
+	rowElement.className = 'middleback';
 	row4.appendChild(rowElement);
+	
+	rowElement = document.createElement("td");
+	rowElement.className = 'middle';
 	row4.appendChild(rowElement);
+	
+	rowElement = document.createElement("td");
+	rowElement.className = 'middlefront';
 	row4.appendChild(rowElement);
+	
+	rowElement = document.createElement("td");
+	rowElement.className = 'front';
 	row4.appendChild(rowElement);
+	
+	rowElement = document.createElement("td");
+	rowElement.className = 'drawbar';
 	row4.appendChild(rowElement);
 
 	var row5 = document.createElement("tr");
@@ -186,36 +220,29 @@ getDom: function(){
 	var rowElement = document.createElement("td");
 	rowElement.className = 'back';
 	rowElement.appendChild(document.createTextNode(hrStr));
-	
 	row5.appendChild(rowElement);
 	
 	rowElement = document.createElement("td");
 	rowElement.className = 'middleback';
-	rowElement.width = '20px';
-
 	row5.appendChild(rowElement);
 
 	rowElement = document.createElement("td");
 	rowElement.className = 'middle';
 	rowElement.appendChild(document.createTextNode(zrStr));
-
 	row5.appendChild(rowElement);
 
 	rowElement = document.createElement("td");
 	rowElement.className = 'middlefront';
 	rowElement.width = '20px';
-
 	row5.appendChild(rowElement);
 	
 	rowElement = document.createElement("td");
 	rowElement.className = 'front';
 	rowElement.appendChild(document.createTextNode(vrStr));
-
 	row5.appendChild(rowElement);
 	
 	rowElement = document.createElement("td");
 	rowElement.className = 'drawbar';
-
 	row5.appendChild(rowElement);
 		
 	// Building of the table rows
@@ -266,6 +293,7 @@ socketNotificationReceived: function(notification, payload){
  */
 prepareAttribute: function(attributeName, strValue, precision, unit){
 	var preparedAttributeValue = "";
+	var floatValue;
 	switch(attributeName){
 		case "HL":
 		case "HR":
@@ -274,7 +302,24 @@ prepareAttribute: function(attributeName, strValue, precision, unit){
 		case "VL":
 		case "VR":
 		case "VO":
-			preparedAttributeValue = Number(parseFloat(strValue)).toLocaleString(this.config.localeStr, {minimumFractionDigits: precision, maximumFractionDigits: precision}) + unit;
+			floatValue = Number(parseFloat(strValue));
+			preparedAttributeValue = floatValue.toLocaleString(this.config.localeStr, {minimumFractionDigits: precision, maximumFractionDigits: precision}) + unit;
+
+			// value < 0 means too low
+			if (floatValue < 0) 
+			{
+				preparedAttributeValue = "▲ "+preparedAttributeValue
+			}
+			else if (floatValue > 0) 
+			{
+				preparedAttributeValue = "▼ "+preparedAttributeValue 
+			}
+			else 
+			{
+				preparedAttributeValue = "⇔ "+preparedAttributeValue
+				
+			}
+
 			break;
 	}
 	return preparedAttributeValue;
