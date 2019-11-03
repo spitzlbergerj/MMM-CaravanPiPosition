@@ -13,11 +13,11 @@
 	margin-right: auto;
 	background-image: url(img/caravanpiMMMbackground.png); /* dimensions of png 400 x 150 */
 	background-repeat: no-repeat;
-	background-position: 15px center;
+	background-position: 15px 30px;
 	font-size: 20px;
 	font-weight: bold;
 	width: 520px !important;
-	height: 150px !important;
+	height: 165px !important;
 }
 
 
@@ -59,4 +59,8 @@
 }
 .rightside {
 	height: 30px;
+}
+.datetime {
+	vertical-align:top;
+	height: 15px;
 }

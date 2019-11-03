@@ -217,7 +217,7 @@ getDom: function(){
 	row5.align = 'center';
 	row5.vAlign = 'top';
 	
-	var rowElement = document.createElement("td");
+	rowElement = document.createElement("td");
 	rowElement.className = 'back';
 	rowElement.appendChild(document.createTextNode(hrStr));
 	row5.appendChild(rowElement);
@@ -244,6 +244,18 @@ getDom: function(){
 	rowElement = document.createElement("td");
 	rowElement.className = 'drawbar';
 	row5.appendChild(rowElement);
+
+	var row6 = document.createElement("tr");
+	row6.className = 'datetime';
+	row6.align = 'center';
+	row6.vAlign = 'top';
+	
+	rowElement = document.createElement("td");
+	rowElement.className = 'sensorDate';
+	rowElement.appendChild(document.createTextNode(this.valueList[i]["datetime"]));
+	rowElement.colSpan = '6';
+	row6.appendChild(rowElement);
+	
 		
 	// Building of the table rows
 	table.appendChild(row1);
@@ -251,6 +263,7 @@ getDom: function(){
 	table.appendChild(row3);
 	table.appendChild(row4);
 	table.appendChild(row5);
+	table.appendChild(row6);
 
 	var wrapper = document.createElement("div")
 	wrapper.className = "MMM-CaravanPiPosition";
