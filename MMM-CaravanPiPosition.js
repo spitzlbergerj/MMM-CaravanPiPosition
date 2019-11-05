@@ -14,7 +14,8 @@ Module.register("MMM-CaravanPiPosition",{
 
 defaults:{
 	valueDir: "/home/pi/CaravanPi/values",
-	updateInterval: 1000000, // milliseconds
+	updateIntervalLong: 300000, // milliseconds = 5 minutes
+	updateIntervalShort: 5000, // milliseconds = 1/2 second
 	diffUnit: " cm",
 	diffPrecision: 1,
 	showDate: true,
@@ -49,7 +50,7 @@ start: function (){
 		this.valueList[i]["vo"] = "0";
 		i+=1;
 	}
-	Log.log('valueList: ', this.valueList);
+	Log.log(this.name + ' valueList: ', this.valueList);
 	this.sendSocketNotification(
 		'CONFIG',
 		{
