@@ -10,8 +10,6 @@ In the CaravanPi project Magic Mirror is used as a display module. The screen is
 [MMM-CaravanPiClimate - Module for displaying climate values](https://github.com/spitzlbergerj/MMM-CaravanPiClimate)
 
 ## Screendumps
-modus: Boxlines
-
 <img src="https://raw.githubusercontent.com/spitzlbergerj/MMM-CaravanPiPosition/master/img/MMM-CaravanPiPosition-Screendump.jpg">
 
 ## Installation
