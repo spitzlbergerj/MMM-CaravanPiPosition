@@ -37,7 +37,7 @@ module.exports = NodeHelper.create({
 	
 	socketNotificationReceived: function(notification, payload) {
 		var self = this;
-		console.error('node_helper MMM-CaravanPiPosition: ' + notification);
+		// console.error('node_helper MMM-CaravanPiPosition: ' + notification);
 		
 		switch(notification) {
 			case "CONFIG":
@@ -62,6 +62,8 @@ module.exports = NodeHelper.create({
 		var cmd = "";
 		var i = 0;
 		
+		console.error('node_helper MMM-CaravanPiPosition - getValues');
+		
 		while (i<valueList.length) {
 			cmd = cmdPart + valueList[i]["file"]
 			console.error('node_helper MMM-CaravanPiPosition - cmd', cmd);
@@ -70,7 +72,7 @@ module.exports = NodeHelper.create({
 			i+=1;
 		}
 
-		console.error('node_helper MMM-CaravanPiPosition - getValues - valueList after', valueListNHCaravanPiPosition[0]);
+		// console.error('node_helper MMM-CaravanPiPosition - getValues - valueList after', valueListNHCaravanPiPosition[0]);
 		self.sendSocketNotification('VALUES', valueListNHCaravanPiPosition);
 	},
 	
@@ -95,7 +97,7 @@ module.exports = NodeHelper.create({
 				valueListNHCaravanPiPosition[i]["vl"] = resSplit[16];
 				valueListNHCaravanPiPosition[i]["vr"] = resSplit[17];
 				valueListNHCaravanPiPosition[i]["vo"] = resSplit[18];
-				console.error('node_helper MMM-CaravanPiPosition - valueList:', valueListNHCaravanPiPosition[i]);
+				// console.error('node_helper MMM-CaravanPiPosition - valueList:', valueListNHCaravanPiPosition[i]);
 			}
 			i+=1;
 		}
