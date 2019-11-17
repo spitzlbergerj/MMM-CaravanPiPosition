@@ -64,3 +64,9 @@
 	vertical-align:top;
 	height: 15px;
 }
+
+.caltext {
+	color: red;
+	font-weight: 900;
+	text-overflow: ellipsis;
+}

@@ -14,7 +14,7 @@ Module.register("MMM-CaravanPiPosition",{
 
 defaults:{
 	valueDir: "/home/pi/CaravanPi/values",
-	updateIntervalLong: 300000, // milliseconds = 5 minutes
+	updateIntervalLong: 60000, // milliseconds = 5 minutes
 	updateIntervalShort: 5000, // milliseconds = 1/2 second
 	diffUnit: " cm",
 	diffPrecision: 1,
@@ -48,6 +48,7 @@ start: function (){
 		this.valueList[i]["vl"] = "0";
 		this.valueList[i]["vr"] = "0";
 		this.valueList[i]["vo"] = "0";
+		this.valueList[i]["cal"] = "0";
 		i+=1;
 	}
 	// Log.log(this.name + ' valueList: ', this.valueList);
@@ -84,6 +85,19 @@ getDom: function(){
 	var vlStr = this.prepareAttribute("VL", this.valueList[i]["vl"]/10, this.config.diffPrecision, this.config.diffUnit);
 	var vrStr = this.prepareAttribute("VR", this.valueList[i]["vr"]/10, this.config.diffPrecision, this.config.diffUnit);
 	var voStr = this.prepareAttribute("VO", this.valueList[i]["vo"]/10, this.config.diffPrecision, this.config.diffUnit);
+	var calStr;
+
+	if (this.valueList[i]["cal"] == "1")
+	{
+		calStr = this.translate('CALIBRATION');
+	}
+	else
+	{
+		calStr = " ";
+	}
+	
+	Log.log('MMM-CaravanPiPosition: calibration? ' + this.valueList[i]["cal"] + ' ' + calStr);
+
 	
 	var table = document.createElement("table");
 	table.className = 'MMMCPIPosition';
@@ -160,25 +174,11 @@ getDom: function(){
 	row3.vAlign = 'top';
 	
 	rowElement = document.createElement("td");
-	rowElement.className = 'back';
+	rowElement.className = 'caltext';
+	rowElement.colSpan = '5';
+	rowElement.appendChild(document.createTextNode(calStr));
 	row3.appendChild(rowElement);
-	
-	rowElement = document.createElement("td");
-	rowElement.className = 'middleback';
-	row3.appendChild(rowElement);
-	
-	rowElement = document.createElement("td");
-	rowElement.className = 'middle';
-	row3.appendChild(rowElement);
-	
-	rowElement = document.createElement("td");
-	rowElement.className = 'middlefront';
-	row3.appendChild(rowElement);
-	
-	rowElement = document.createElement("td");
-	rowElement.className = 'front';
-	row3.appendChild(rowElement);
-	
+		
 	rowElement = document.createElement("td");
 	rowElement.className = 'drawbar';
 	rowElement.appendChild(document.createTextNode(voStr));
@@ -278,7 +278,7 @@ socketNotificationReceived: function(notification, payload){
 	switch(notification) {
 		case "VALUES":
 			this.valueList = payload;
-			// Log.log('valueList in socketNotificationReceived: ', this.valueList);
+			Log.log('valueList in socketNotificationReceived: ', this.valueList);
 			this.updateDom();
 			break
 	}
