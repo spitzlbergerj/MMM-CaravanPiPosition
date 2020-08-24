@@ -28,6 +28,11 @@ install the node dependencies:
 cd MMM-CaravanPiPosition/ && npm install
 ````
 
+install a nesessary npm modul:
+```
+npm install async
+```
+
 ## Using the module
 
 To use this module, add it to the modules array in the `config/config.js` file:
